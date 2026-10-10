@@ -1,0 +1,78 @@
+---
+const faqs = [
+  {
+    q: 'What are your gym timings?',
+    a: 'We are open Monday to Saturday from 6:00 AM to 10:00 PM, and Sunday from 2:00 PM to 9:00 PM.',
+  },
+  {
+    q: 'Can I get a free trial?',
+    a: 'Yes! We offer a free trial session for first-time visitors. Just walk in or call us to schedule your trial.',
+  },
+  {
+    q: 'Do you have personal trainers?',
+    a: 'Absolutely. Our certified trainers offer one-on-one sessions tailored to your goals. Personal training is available at an additional cost.',
+  },
+  {
+    q: 'What payment methods do you accept?',
+    a: 'We accept cash, UPI, and major debit/credit cards. EMI options may be available for annual plans.',
+  },
+  {
+    q: 'Is there parking available?',
+    a: 'Yes, there is parking available near the gym premises in Sector 28 Main Hudda Market.',
+  },
+  {
+    q: 'Do you offer diet plans?',
+    a: 'Yes, we provide basic diet guidance with select membership plans. Customized nutrition plans are available with personal training.',
+  },
+];
+---
+
+<section class="section-padding bg-hype-charcoal">
+  <div class="container-max max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+        FAQ
+      </p>
+      <h2 class="reveal reveal-delay-1 heading-lg text-white">
+        Common Questions
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1} faq-item bg-hype-black rounded-sm border border-white/5 overflow-hidden`}>
+          <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+            <span class="font-semibold text-white pr-4">{faq.q}</span>
+            <svg class="faq-icon w-5 h-5 text-hype-accent flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-white/50 text-sm leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = toggle.querySelector('.faq-icon');
+
+      // Close others
+      document.querySelectorAll('.faq-item').forEach((other) => {
+        if (other !== item) {
+          other.querySelector('.faq-answer')?.classList.add('hidden');
+          other.querySelector('.faq-icon')?.classList.remove('rotate-180');
+        }
+      });
+
+      answer?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

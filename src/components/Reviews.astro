@@ -1,0 +1,92 @@
+---
+// Based on real customer feedback themes from the Google Maps listing.
+// Replace with actual review text and reviewer names.
+const reviews = [
+  {
+    name: 'Rahul S.',
+    rating: 5,
+    text: 'Best gym in Sector 28. Trainers are very helpful, especially Sunil bhai. Equipment is well maintained and the atmosphere is great for serious training.',
+    date: '2 months ago',
+  },
+  {
+    name: 'Priya M.',
+    rating: 5,
+    text: 'Joined 3 months ago and already seeing great results. The staff is cooperative and the gym is always clean. Highly recommend for beginners.',
+    date: '1 month ago',
+  },
+  {
+    name: 'Amit K.',
+    rating: 4,
+    text: 'Good gym with all necessary equipment. Manager Vivek is very helpful. Timing is convenient for working professionals.',
+    date: '3 weeks ago',
+  },
+  {
+    name: 'Sneha R.',
+    rating: 5,
+    text: 'The energy here is unmatched. Personal training sessions with Rohit are worth every rupee. Lost 8 kgs in 4 months!',
+    date: '2 weeks ago',
+  },
+];
+---
+
+<section id="reviews" class="section-padding bg-hype-black">
+  <div class="container-max">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+        Testimonials
+      </p>
+      <h2 class="reveal reveal-delay-1 heading-lg text-white mb-4">
+        What Our Members Say
+      </h2>
+      <div class="reveal reveal-delay-2 flex items-center justify-center gap-2 mb-4">
+        <div class="flex text-hype-accent">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ))}
+        </div>
+        <span class="text-white/50 text-sm">4.8 from Google Reviews</span>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid md:grid-cols-2 gap-6">
+      {reviews.map((review, i) => (
+        <div class={`reveal reveal-delay-${(i % 2) + 1} bg-hype-charcoal p-6 sm:p-8 rounded-sm border border-white/5`}>
+          <div class="flex text-hype-accent mb-4">
+            {Array.from({ length: 5 }).map((_, j) => (
+              <svg class={`w-4 h-4 ${j < review.rating ? 'text-hype-accent' : 'text-white/20'}`} fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-white/70 leading-relaxed mb-4">"{review.text}"</p>
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-sm">{review.name}</span>
+            <span class="text-white/30 text-xs">{review.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12 reveal">
+      <a
+        href="https://www.google.com/maps/place/Hype+The+Gym+-+28+sector+Faridabad/@28.4347427,77.3147693,16z"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline text-sm"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+        Review us on Google
+      </a>
+    </div>
+
+    <p class="text-center text-white/30 text-sm mt-6 reveal">
+      * Testimonials are based on real Google review themes. Replace with actual review text.
+    </p>
+  </div>
+</section>

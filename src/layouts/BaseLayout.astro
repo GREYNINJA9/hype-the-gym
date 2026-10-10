@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Hype The Gym | Best Gym in Sector 28, Faridabad',
+  description = 'Join Hype The Gym in Sector 28, Faridabad. Weight training, cardio, personal training & group classes. Book your free trial today. Call 095552 00004.',
+  ogImage = '/images/hero-bg.jpg',
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() || 'https://hypethegym-faridabad.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// LocalBusiness Schema Markup
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "name": "Hype The Gym - 28 Sector Faridabad",
+  "image": `${siteUrl}/images/hero-bg.jpg`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sector 28, Main Hudda Market SCO 100",
+    "addressLocality": "Faridabad",
+    "addressRegion": "Haryana",
+    "postalCode": "121008",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 28.4347427,
+    "longitude": 77.3147693
+  },
+  "telephone": "+91-95552-00004",
+  "url": siteUrl,
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "06:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "14:00",
+      "closes": "21:00"
+    }
+  ],
+  "priceRange": "₹₹",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "1,686"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="gym in Sector 28 Faridabad, best gym in Faridabad, Hype The Gym, fitness center Faridabad, personal training Faridabad" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Hype The Gym" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+        reveals.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

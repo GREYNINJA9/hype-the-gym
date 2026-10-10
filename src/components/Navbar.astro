@@ -1,0 +1,101 @@
+---
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#programs', label: 'Programs' },
+  { href: '#trainers', label: 'Trainers' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#reviews', label: 'Reviews' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="container-max px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center">
+        <img
+          src="/images/hypegymlogo.jpg"
+          alt="Hype The Gym logo"
+          class="h-12 md:h-16 w-auto object-contain"
+        />
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="hidden lg:flex items-center gap-6">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm font-semibold uppercase tracking-wider text-white/70 hover:text-hype-accent transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex btn-primary text-xs px-6 py-3">
+          Join Now
+        </a>
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden text-white p-2"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-hype-charcoal border-t border-white/10">
+    <ul class="px-4 py-4 space-y-2">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block py-3 text-sm font-semibold uppercase tracking-wider text-white/70 hover:text-hype-accent transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="#contact" class="block btn-primary text-center text-sm mt-4">Join Now</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-hype-black/95', 'backdrop-blur-md', 'shadow-lg');
+    } else {
+      navbar.classList.remove('bg-hype-black/95', 'backdrop-blur-md', 'shadow-lg');
+    }
+  });
+
+  mobileBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>

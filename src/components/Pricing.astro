@@ -1,0 +1,117 @@
+---
+// Editable pricing — update these values to match your actual plans
+const plans = [
+  {
+    name: 'Monthly',
+    price: '1,500',
+    period: '/month',
+    features: ['Full Gym Access', 'Cardio Zone', 'Locker Room', 'Free Fitness Assessment'],
+    popular: false,
+  },
+  {
+    name: 'Quarterly',
+    price: '3,800',
+    period: '/3 months',
+    features: ['Everything in Monthly', '1 PT Session', 'Diet Plan', 'Progress Tracking'],
+    popular: true,
+    save: 'Save ₹700',
+  },
+  {
+    name: 'Half-Yearly',
+    price: '6,500',
+    period: '/6 months',
+    features: ['Everything in Quarterly', '3 PT Sessions', 'Custom Diet Plan', 'Body Composition Analysis'],
+    popular: false,
+    save: 'Save ₹2,500',
+  },
+  {
+    name: 'Yearly',
+    price: '10,999',
+    period: '/year',
+    features: ['Everything in Half-Yearly', '6 PT Sessions', 'Priority Support', 'Free Gym Merch'],
+    popular: false,
+    save: 'Save ₹7,000',
+  },
+];
+---
+
+<section id="pricing" class="section-padding bg-hype-black">
+  <div class="container-max">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+        Membership
+      </p>
+      <h2 class="reveal reveal-delay-1 heading-lg text-white mb-4">
+        Choose Your Plan
+      </h2>
+      <p class="reveal reveal-delay-2 text-white/50">
+        Simple, transparent pricing. No hidden charges. Cancel anytime.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {plans.map((plan, i) => (
+        <div
+          class={`reveal reveal-delay-${i + 1} relative flex flex-col rounded-sm border transition-all duration-300 hover:-translate-y-2 ${
+            plan.popular
+              ? 'bg-hype-accent text-black border-hype-accent scale-105 lg:scale-110 z-10'
+              : 'bg-hype-charcoal border-white/5 hover:border-hype-accent/30'
+          }`}
+        >
+          {plan.popular && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-hype-accent text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">
+              Most Popular
+            </div>
+          )}
+
+          <div class="p-8 flex-1">
+            <h3 class={`text-xl font-bold uppercase tracking-wider mb-2 ${plan.popular ? 'text-black' : 'text-white'}`}>
+              {plan.name}
+            </h3>
+            <div class="flex items-end gap-1 mb-1">
+              <span class={`text-4xl font-heading ${plan.popular ? 'text-black' : 'text-hype-accent'}`}>
+                ₹{plan.price}
+              </span>
+              <span class={`text-sm ${plan.popular ? 'text-black/60' : 'text-white/40'}`}>
+                {plan.period}
+              </span>
+            </div>
+            {plan.save && (
+              <span class={`inline-block text-xs font-bold px-2 py-0.5 rounded ${plan.popular ? 'bg-black/20 text-black' : 'bg-hype-accent/10 text-hype-accent'}`}>
+                {plan.save}
+              </span>
+            )}
+
+            <ul class="mt-6 space-y-3">
+              {plan.features.map((feature) => (
+                <li class={`flex items-start gap-2 text-sm ${plan.popular ? 'text-black/80' : 'text-white/60'}`}>
+                  <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? 'text-black' : 'text-hype-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a
+              href="#contact"
+              class={`block text-center font-bold uppercase tracking-wider py-3 px-6 rounded-sm transition-all duration-200 ${
+                plan.popular
+                  ? 'bg-black text-hype-accent hover:bg-hype-black'
+                  : 'bg-hype-accent text-black hover:bg-hype-accentHover'
+              }`}
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-white/30 text-sm mt-8 reveal">
+      * Prices are indicative placeholders. Contact us for current offers and personal training rates.
+    </p>
+  </div>
+</section>

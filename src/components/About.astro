@@ -1,0 +1,59 @@
+<section id="about" class="section-padding bg-hype-black">
+  <div class="container-max">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Image -->
+      <div class="reveal">
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80"
+            alt="Members training at Hype The Gym"
+            class="w-full rounded-sm shadow-2xl"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-hype-accent text-black p-6 hidden sm:block">
+            <div class="font-heading text-5xl leading-none">8+</div>
+            <div class="text-xs font-bold uppercase tracking-wider mt-1">Years Strong</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+          About Us
+        </p>
+        <h2 class="reveal reveal-delay-1 heading-lg text-white mb-6">
+          More Than a Gym.<br />
+          <span class="text-hype-accent">It's a Movement.</span>
+        </h2>
+        <div class="reveal reveal-delay-2 space-y-4 text-white/60 leading-relaxed">
+          <p>
+            Hype The Gym started with one simple belief: fitness should be for everyone. Not just for athletes or bodybuilders, but for every person in Faridabad who wants to feel stronger, healthier, and more confident.
+          </p>
+          <p>
+            Located in the heart of Sector 28, our gym has become the go-to spot for young adults and fitness enthusiasts who want real results without the intimidation. Whether you're lifting for the first time or chasing a new PR, our team has your back.
+          </p>
+          <p>
+            We keep it simple — quality equipment, knowledgeable trainers, and a vibe that makes you want to show up every single day. No ego. No judgement. Just progress.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-3 grid grid-cols-2 gap-4 mt-8">
+          {[
+            'Modern Equipment',
+            'Certified Trainers',
+            'Personal Attention',
+            'Affordable Plans',
+          ].map((item) => (
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <svg class="w-5 h-5 text-hype-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

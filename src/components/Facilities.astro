@@ -1,0 +1,48 @@
+---
+const facilities = [
+  'Premium Weight Machines',
+  'Extensive Free Weight Area',
+  'Dedicated Cardio Zone',
+  'Functional Training Space',
+  'Clean Locker Rooms',
+  'Air-Conditioned Hall',
+  'Purified Drinking Water',
+  'Parking Available',
+];
+---
+
+<section class="section-padding bg-hype-black">
+  <div class="container-max">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+          Facilities
+        </p>
+        <h2 class="reveal reveal-delay-1 heading-lg text-white mb-6">
+          Everything You Need to Train Hard
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 mb-8 leading-relaxed">
+          We've built a space that supports serious training. From the equipment to the atmosphere, every detail is designed to help you perform at your best.
+        </p>
+
+        <div class="reveal reveal-delay-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {facilities.map((facility) => (
+            <div class="flex items-center gap-3 text-white/80">
+              <span class="w-1.5 h-1.5 bg-hype-accent rounded-full flex-shrink-0"></span>
+              <span class="text-sm">{facility}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80"
+          alt="Modern gym equipment at Hype The Gym"
+          class="w-full rounded-sm shadow-2xl"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

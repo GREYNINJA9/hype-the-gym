@@ -1,0 +1,64 @@
+---
+// Placeholder trainer data — replace with real team info and photos
+const trainers = [
+  {
+    name: 'Sunil',
+    specialty: 'Strength & Conditioning',
+    experience: '8+ Years',
+    image: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80',
+  },
+  {
+    name: 'Rohit',
+    specialty: 'Weight Loss & Nutrition',
+    experience: '6+ Years',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80',
+  },
+  {
+    name: 'Vishal',
+    specialty: 'Functional Training',
+    experience: '5+ Years',
+    image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80',
+  },
+];
+---
+
+<section id="trainers" class="section-padding bg-hype-charcoal">
+  <div class="container-max">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-hype-accent font-bold uppercase tracking-[0.2em] text-sm mb-3">
+        Our Team
+      </p>
+      <h2 class="reveal reveal-delay-1 heading-lg text-white mb-4">
+        Meet Your Trainers
+      </h2>
+      <p class="reveal reveal-delay-2 text-white/50">
+        Experienced, approachable, and genuinely invested in your progress.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {trainers.map((trainer, i) => (
+        <div class={`reveal reveal-delay-${i + 1} group`}>
+          <div class="relative overflow-hidden rounded-sm">
+            <img
+              src={trainer.image}
+              alt={`${trainer.name} - ${trainer.specialty} trainer at Hype The Gym`}
+              class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-hype-black via-transparent to-transparent opacity-80"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-2xl text-white">{trainer.name}</h3>
+              <p class="text-hype-accent text-sm font-semibold">{trainer.specialty}</p>
+              <p class="text-white/50 text-xs mt-1">{trainer.experience} Experience</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-white/30 text-sm mt-8 reveal">
+      * Replace trainer names and photos with your actual team members.
+    </p>
+  </div>
+</section>
