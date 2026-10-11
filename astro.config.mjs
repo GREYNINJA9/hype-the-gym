@@ -8,6 +8,9 @@ export default defineConfig({
   site: 'https://hypethegym-faridabad.com',
   output: 'server',
   adapter: vercel(),
+  security: {
+    checkOrigin: false,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,

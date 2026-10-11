@@ -2,6 +2,19 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const origin = request.headers.get('origin');
+    const host = request.headers.get('x-forwarded-host')?.split(',')[0].trim()
+      || request.headers.get('host');
+    const protocol = request.headers.get('x-forwarded-proto')?.split(',')[0].trim()
+      || new URL(request.url).protocol.replace(':', '');
+
+    if (!origin || !host || new URL(origin).host !== host || new URL(origin).protocol !== `${protocol}:`) {
+      return new Response(
+        JSON.stringify({ message: 'Cross-site form submissions are forbidden.' }),
+        { status: 403, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const data = await request.formData();
     const name = data.get('name')?.toString().trim();
     const phone = data.get('phone')?.toString().trim();
